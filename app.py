@@ -35,12 +35,16 @@ def predict_api():
     print(output[0])
     return jsonify(output[0]) #return the output in json format
 
+# to get an input from a user through a website "home.html" and provide an output to them
 @app.route('/predict',methods=['POST'])
 def predict():
-    data=[float(x) for x in request.form.values()]
+    data=[float(x) for x in request.form.values()] #get a float value for all values in x which is requested via the form
     final_input=scalar.transform(np.array(data).reshape(1,-1))
     print(final_input)
     output=regmodel.predict(final_input)[0]
+    
+    # to render a specific html ("home.html")
+    # return a prediction_text denoted in a placeholder on the html page
     return render_template("home.html",prediction_text="The House price prediction is {}".format(output))
 
 if __name__=="__main__":
