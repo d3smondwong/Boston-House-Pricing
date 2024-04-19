@@ -11,3 +11,8 @@ Create a new environment
 ```
 conda create -p venv python==3.11 -y
 ```
+
+See Requirements.txt for packages that are required for installation
+```
+pip install -r Requirements.txt
+```
